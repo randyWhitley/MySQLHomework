@@ -1,12 +1,12 @@
-const mysql = require("mysql");
+let mysql = require("mysql");
 
-const connection = mysql.createConnection({
+let connection = mysql.createConnection({
   host: "localhost",
 
    port: 8080,
 
   user: "root",
-  password: "mysql",
+  password: "fruit",
   database: "employee_tracker_db",
 });
 
@@ -15,5 +15,5 @@ connection.connect(function (err) {
   console.log("connected at " + connection.threadId + "\n");
 });
 
-module.exports = connection;
+module.exports = {connection};
 

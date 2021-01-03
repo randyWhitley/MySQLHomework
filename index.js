@@ -4,18 +4,6 @@ const cTable = require("console.table");
 const logo = require("asciiart-logo");
 const config = require("./package.json");
 
-var connection = mysql.createConnection({
-    host: "localhost",
-    port: 8080,
-    user: "root",
-    password: "rootroot",
-    database: "employees"
-  });
-  
-  connection.connect(function(err) {
-    if (err) throw err;
-    startUp();
-  });
   
   function startUp() {
     inquirer
@@ -96,7 +84,7 @@ var connection = mysql.createConnection({
   };
   
   function addEmp() {
-    var questions = [
+    let questions = [
       {
         type: "input",
         message: "What's the employee's first name?",
@@ -157,7 +145,7 @@ var connection = mysql.createConnection({
   };
   
   function addRole() {
-    var questions = [
+    let questions = [
       {
         type: "input",
         message: "What type of role would you like to add?",
@@ -190,8 +178,8 @@ var connection = mysql.createConnection({
     });
   };
   function updateEmpRole() {
-    var employees = empAllSearch();
-    var empChoices = employees.map(index => {
+    let employees = empAllSearch();
+    let empChoices = employees.map(index => {
       id: id;
     })
     inquirer.prompt({
