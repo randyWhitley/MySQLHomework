@@ -22,7 +22,7 @@ const config = require("./package.json");
           "exit"
         ]
       })
-      .then(function(answer) {
+      .then((answer)=> {
         switch (answer.action) {
           case "View All Employees":
             empAllSearch();
@@ -192,3 +192,6 @@ const config = require("./package.json");
     connection.query("UPDATE employee SET role_id = ? WHERE employee_id = ?", [roleID, empID])
   
   };
+
+ startUp();
+  
