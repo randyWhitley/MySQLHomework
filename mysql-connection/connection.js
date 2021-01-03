@@ -14,5 +14,5 @@ connection.connect(function (err) {
   console.log("connected at " + connection.threadId + "\n");
 });
 
-module.exports = {connection};
+module.exports = connection;
 

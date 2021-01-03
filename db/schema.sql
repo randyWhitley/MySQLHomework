@@ -27,13 +27,13 @@ VALUES ("Head Engineer", 350000, 2);
 INSERT INTO role (title, salary, department_id)
 VALUES ("Software Engineer", 125000, 2);
 INSERT INTO role (title, salary, department_id)
-VALUES ("Account Manager", 130000,3);
+VALUES ("Manager", 130000,3);
 INSERT INTO role (title, salary, department_id)
-VALUES ("Account", 120000, 3);
+VALUES ("Account", 120000, 4);
 INSERT INTO role (title, salary, department_id)
-VALUES ("Lawyer", 600000, 4);
+VALUES ("Lawyer", 600000, 5);
 INSERT INTO role (title, salary, department_id)
-VALUES ("Secretary Legal", 19000, 4);
+VALUES ("Secretary Legal", 19000, 5);
 
 CREATE TABLE employee(
 employee_id INT AUTO_INCREMENT PRIMARY KEY,
@@ -48,20 +48,20 @@ CONSTRAINT fk_manager FOREIGN KEY (manager_id) REFERENCES employee(employee_id) 
 INSERT INTO employee (first_name, last_name, role_id, manager_id)
 VALUES ("Ron", "Jon", 1, null);
 INSERT INTO employee (first_name, last_name, role_id, manager_id)
-VALUES ("Bon", "Don", 2, null);
+VALUES ("Bon", "Don", 1, null);
 INSERT INTO employee (first_name, last_name, role_id, manager_id)
-VALUES ("Jake", "Rake", 3, null);
+VALUES ("Jake", "Rake", 2, null);
 INSERT INTO employee (first_name, last_name, role_id, manager_id)
-VALUES ("Lake", "Fake", 4, null);
+VALUES ("Lake", "Fake", 2, null);
 INSERT INTO employee (first_name, last_name, role_id, manager_id)
-VALUES ("Lama", "Bama", 5, null);
+VALUES ("Randy", "Whitley", 3, null);
 INSERT INTO employee (first_name, last_name, role_id, manager_id)
-VALUES ("Zoro", "Toro", 6, null);
+VALUES ("Zoro", "Toro", 4, null);
 INSERT INTO employee (first_name, last_name, role_id, manager_id)
-VALUES  ("Riff", "Raff", 7, null);
+VALUES  ("Riff", "Raff", 4, null);
 INSERT INTO employee (first_name, last_name, role_id, manager_id)
-VALUES  ("Stan", "Dan", 8, null);
+VALUES  ("Stan", "Dan", 5, null);
 INSERT INTO employee (first_name, last_name, role_id, manager_id)
 VALUES ("Gaaaa", "Haaa", 5, null);
 INSERT INTO employee  (first_name, last_name, role_id, manager_id)
-VALUES ("Voltron", "White", 6, null);
+VALUES ("Voltron", "White", 5, null);

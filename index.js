@@ -159,7 +159,8 @@ const config = require("./package.json");
       {
         type: "list",
         message: "What is the salary for this role?",
-        name: "salary"
+        name: "salary",
+        choices:[10,20,30]
       }
     ];
     inquirer.prompt(questions).then(function(answer) {
