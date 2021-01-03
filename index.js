@@ -6,7 +6,7 @@ const config = require("./package.json");
 
 var connection = mysql.createConnection({
     host: "localhost",
-    port: 3306,
+    port: 8080,
     user: "root",
     password: "rootroot",
     database: "employees"
