@@ -38,7 +38,7 @@ function startUp() {
         case "Add Departments":
           addDept();
           break;
-        case "Add Role":
+        case "Add Roles":
           addRole();
           break;
         case "Update Employee Role":
@@ -181,44 +181,54 @@ function addRole() {
   });
 }
 function updateEmpRole() {
-  let employees = ["1", "2", "3", "4", "5"];
+  connection.query("SELECT * FROM employee", (empErr, empData) => {
+    if (empErr) throw empErr;
+    connection.query("SELECT * FROM role", (roleErr, roleData) => {
+      if (roleErr) throw roleErr;
 
-  let empChoices = employees.map((index) => {
-    id: index;
-  });
-  connection.query("SELECT * FROM employee", (err,data) => {
-    if (err) throw err;
-    console.log (data);
-    const track = [];
-    for (i = 0; i < data.length; i++) {
-    const firstLast = data[i].first_name + data[i].last_name; 
-    track.push(firstLast)
-    }
-    console.log(track);
-    inquirer
-    .prompt({
-      type: "list",
-      name: "roleId",
-      message: " WHich role would you like to assign the employee?",
-      choices: track,
-    }).then((answer) => {
-      console.log(answer);
-      // if answer = 
-      // need if statement that compares the answer from your inquirer prompt to the data in your database based on the
-      // formatting of the answer from your inquirer prompt
+      const employees = [];
+      for (i = 0; i < empData.length; i++) {
+        const firstLast = empData[i].first_name + empData[i].last_name;
+        employees.push(firstLast);
+      }
+      const roles = [];
+      for (i = 0; i < roleData.length; i++) {
+        roles.push(roleData[i].title);
+      }
+    
+      inquirer
+        .prompt([
+          {
+            type: "list",
+            name: "employeeId",
+            message: " Which employee's role would you like to update?",
+            choices: employees,
+          },
 
-      //once you've found a match, we need to ask what new role are we giving them
-      //This is going to require another inquirer.prompt().then()
+          {
+            type: "list",
+            name: "newRole",
+            message: "What is their new role?",
+            choices: roles,
+          },
+        ])
+        .then((answer) => {
+          console.log(answer);
+          // if answer =
+          // need if statement that compares the answer from your inquirer prompt to the data in your database based on the
+          // formatting of the answer from your inquirer prompt
 
-      //Inside of the second inquire, then use the connection.query below to go into the database and
-      //change the role of the employee into the new one you've selected
-      
-      //if commit out should work.....
-      connection.query("UPDATE employee SET role_id = ? WHERE employee_id = ?", [roleID, empID]);
+          //once you've found a match, we need to ask what new role are we giving them
+          //This is going to require another inquirer.prompt().then()
+
+          //Inside of the second inquire, then use the connection.query below to go into the database and
+          //change the role of the employee into the new one you've selected
+
+          //if commit out should work.....
+          connection.query("UPDATE employee SET role_id = ? WHERE employee_id = ?", [roleID, empID]);
+        });
     });
   });
-  
 }
-
 
 startUp();
